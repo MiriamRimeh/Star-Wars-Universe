@@ -1,0 +1,124 @@
+-----------------------------
+### POINTERS TO CLASSES ###
+-----------------------------
+- once declared, a class becomes a valid type so it can be used as the type pointed to by a pointer 
+  
+  For example:
+  class Rectangle {
+     private:
+     //...
+     public:
+     //...
+     int area () {return ...}
+  };
+
+  int main () {
+     Rectangle *foo, *bar, *baz;
+     //more code
+     cout << "foo's area:"  << foo->area() << '\n';
+     cout << "bar's area:"  << bar->area() << '\n';
+  }
+
+------------------
+### OPERATORS ###
+------------------
+expression     can be read as
+   *x          pointed to by x
+   &x          addres of x
+   x.y         member y of object x
+   x->y        member y of object pointed to by x
+   (*x).y      member y of object pointed to by x (equivalent to x->y)
+   x[0]        first object pointed to by x
+   x[1]        second object pointed to by x
+   x[n]        (n+1)th object pointed to by x
+
+---------
+# THIS #
+---------
+this represents a pinter to the object whose member function is being executed. It is used within a class' member funciton to refer to the object itself
+it is frequently used in operator= member functions that return objects by reference
+
+----------------------------
+### SETTERS AND GETTERS ###
+----------------------------
+setters -> validating functions; e.g. if we're making a class about a person, we need a setter to validate the age
+getters -> need to retrieve the data stored in a class object
+
+getters and setters provide safe access to private variables since setters can be written with data validation code
+however, member variables can be retrieved but no set so they don't need a setter
+
+------------------------
+### SPECIAL MEMBERS ###
+------------------------
+member function      typical form for class C 
+default constructor  C :: C()
+desturctor           C :: ~C()
+copy constructor     C :: C(const C&)
+copy assignment      C& operator= (const C&)
+move constructor     C :: C(C&&)
+move assignment      C& operator= (C&&)
+
+-- Default constructor --
+- constructor called when objects of a class are declared, but are not initialized with any arguments
+- if a class has a constructor with parameters but not a default constructor, the compiler doesn't provide an implicit default constructor any more
+  so it no longer allows the declaration of new objects of that class without arguments
+
+-- Destructor --
+- they're responsible for the necessary cleanup needed by a class after its life ends
+
+-- Copy constructor --
+- when an object is passed a named object of its own type as argument, its copy constructor is invoked in order to construct a copy
+- it's a constructor whose first parameter is type reference to the class itself 
+
+https://www.cplusplus.com/doc/tutorial/classes2/
+
+използване не вектор в класове:  https://github.com/sharkoo0/oop-2019-2020/tree/master/Dynamic%20Memory
+
+--------------------------------
+### COMMAND LINE FUNCTIONS ###
+--------------------------------
+the idea is the user to open cmd and from the terminal itself, without having to open VSCode, to call "open <file_name>.cpp" or to call "<function_name>" in this file and to print
+   the data wanted data
+
+
+---------------------------
+### WORKING WITH FILES ###
+---------------------------
+oftstream -> писане във файл
+ifstream -> за четене от файл
+fstream -> за чете и писане във файл
+
+### CREATING FILES ###
+ofsteam fileOut("name_of_file");
+   OR 
+ofstream fileOut;
+fileOut.open("name_of_file");
+
+### FLAGS ###
+ios::in -> за четене от файл
+ios::out -> писане във файл
+ios::binary -> отваряне само за двоично ползване
+ios::ate -> задава първоначална позиция в края на файла
+ios::app -> всички изходни операции се извършват в края на файла
+ios::trunc -> ако файлът е отворен за изходни операции и той вече съществува, предишното му съдържание се изстрива и се заменя с новото
+
+More than one flag can be called by |
+
+### CHECK IF FILE IS OPEN ###
+if(fileOut.is_open) {
+   //...
+} else {
+   std::cout << "unable to open" <<std::endl;
+}
+
+### CLOSING FILES ###
+fileOut.close();
+
+### STREAM POSITION ###
+tellg() -> взима текуща позиция
+seekg(how many positions, from where) -> отмества указателя във файла спрямо определената посока (може да не се задава от къде)
+
+offset  
+ios::beg -> отмества от началото на потока
+ios::cur -> отмества от текущата позиция
+ios::end -> отмества от края на потока
