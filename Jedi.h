@@ -1,5 +1,6 @@
 #pragma once
-#include "Planet.h"
+#include <iostream>
+#include <cstring>
 
 enum Rank {
    YOUNGLING, INITIATE, PADAWAN, KNIGHT_ASPIRANT, KNIGHT, MASTER, BATTLE_MASTER, GRAND_MASTER
@@ -12,10 +13,6 @@ private:
    int jedi_age;
    char* saber_color;
    double jedi_strenght;
-   Planet planet;
-
-   void copy(const Jedi& other_jedi);
-   void erase();
 
 public:
    Jedi();
@@ -24,21 +21,7 @@ public:
    Jedi& operator=(const Jedi& other_jedi);
    ~Jedi();
 
-   //setters
-   void set_jedi_name(const char* other_name);
-   void set_rank(const Rank other_rank);
-   void set_age(const int other_age);
-   void set_saber_color(const char* other_saber_color);
-   void set_strenght(const double other_strenght);
-   void set_planet(const Planet other_planet);
-
-   //getters
-   char* get_jedi_name();
-   Rank get_rank();
-   int get_age();
-   char* get_saber_color();
-   double get_strenght();
-   Planet get_planet();
+   void print(const char* jedi_name) const;
 
    /*
     * TODO:

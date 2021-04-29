@@ -122,3 +122,5 @@ offset
 ios::beg -> отмества от началото на потока
 ios::cur -> отмества от текущата позиция
 ios::end -> отмества от края на потока
+
+### USE STRING INSTEAD OF CHAR* BY IMPLEMENTING CLASS STRING ###
