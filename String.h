@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstring>
 
+//https://github.com/stefan50/MyCalendar/blob/master/String.hpp
+
 class String {
 private:
    size_t size;

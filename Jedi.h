@@ -21,14 +21,11 @@ public:
    Jedi& operator=(const Jedi& other_jedi);
    ~Jedi();
 
-   void print(const char* jedi_name) const;
+   void promote_jedi(const char* jedi_name, double multiplier);
+   void demote_jedi(const char* jedi_name, double multiplier);
 
    /*
     * TODO:
-    * print(jedi_name)
-    * create_jedi(planet_name, jedi_name, jedi_rank, jedi_age, saber_color, jedi_strenght)
-    * promote_jedi(jedi_name, multiplier)
-    * demote_jedi(jedi_name, multiplier)
     * get_strongest_jedi(planet_name) -> class Planet(?)
     * get_most_used_saber_color(planet_name, jedi_rank) -> class Planet(?)
     * get_youngest_jedi(planet_name, jedi_rank)
