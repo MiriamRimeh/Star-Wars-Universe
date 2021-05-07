@@ -1,28 +1,23 @@
 #pragma once
-#include <iostream>
 #include "Jedi.h"
+#include "Vector.h"
+#include <iostream>
+#include <cstring>
+#include <ostream>
+#include <istream>
 
 class Planet {
 private:
-   Jedi* jedi; //fix -> should it be Jedi jedi or Jedi* jedi? maybe Jedi jedi
    char* planet_name;
+   Vector<Jedi> citizens;
 
 public:
    Planet();
-   Planet(const Planet& other_planet);
-   Planet& operator=(const Planet& other_planet);
+   Planet(const Planet& other);
+   Planet& operator=(const Planet& other);
    ~Planet();
 
-   void add_planet(const char* planet_name); //opens file with planets and enters the name of the planet
-   void create_jedi(const char* planet_name, const Jedi& jedi_name, const Jedi& jedi_rank, const Jedi& jedi_age, const Jedi& saber_color, const Jedi& jedi_strenght);
-   void remove_jedi(const char* planet_name, const Jedi& jedi_name);
-   Jedi& get_youngest_jedi(const char* planet_name, const Jedi& jedi_rank);
-   Jedi& get_strongest_jedi(const char* planet_name);
-   Jedi& get_most_used_saber_color(const char* planet_name, const Jedi& jedi_rank);
-   Jedi& get_most_used_saber_color(const char* planet_name);
-   void print(const char* planet_name) const;
-   void print(const char* jedi_name) const;
-
-   //implement functions and test them, make sure the types of the functions are correct
-
+   //you can implement the interface of the main menu with operator <<
+   friend std::ostream& operator<<(std::ostream& out, const Planet& other);
+   friend std::istream& operator>>(std::istream& in, Planet& other);
 };

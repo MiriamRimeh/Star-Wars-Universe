@@ -1,60 +1,89 @@
 #include "Jedi.h"
 
-
-Jedi::Jedi () { // check if I need to put this-> in front of the variables
-   this->jedi_name = new char[1];
-   this->jedi_name[0] = '\n';
-   this->jedi_rank = YOUNGLING; // default is YOUNGLING because when creating a jedi they should be the lowest rank possible unless stated otherwise
-   this->jedi_age = 0;
-   this->saber_color = new char[1];
-   this->saber_color[0] = '\n';
-   this->jedi_strenght = 0;
+Jedi::Jedi() {
+   this->jedi_name = nullptr;
+   this->rank = Rank::YOUNGLING;
+   this->age = 0;
+   this->saber_colour = nullptr;
+   this->strength = 0;
 }
 
-Jedi::Jedi(const Jedi& other_jedi) {
-   this->jedi_name = new char(strlen[other.jedi_name] + 1);
+Jedi::Jedi(const Jedi& other) {
+   this->jedi_name = new char[strlen(other.jedi_name) + 1];
    strcpy(this->jedi_name, other.jedi_name);
 
-   this->jedi_rank = other.jedi_rank;
+   this->rank = other.rank;
 
-   this->jedi_age = other.jedi_age;
+   this->age = other.age;
 
-   this->saber_color = new char(strlen[other.saber_color] + 1);
-   strcpy(this->saber_color, other.saber_color);
+   this->saber_colour = new char[strlen(other.saber_colour) + 1];
+   strcpy(this->saber_colour, other.saber_colour);
 
-   this->jedi_strenght = other.jedi_strength;
+   this->strength = other.strength;
 }
 
-Jedi& Jedi::operator=(const Jedi& other_jedi) {
-   if(this != &other_jedi) {
-      delete[] this->jedi_name;
-      delete[] this->saber_color;
+Jedi& Jedi::operator=(const Jedi& other) {
+   if(this != &other) {
+      delete[] jedi_name;
+      delete[] saber_colour;
 
-      this->jedi_name = new char(strlen[other.jedi_name] + 1);
+      this->jedi_name = new char[strlen(other.jedi_name) + 1];
       strcpy(this->jedi_name, other.jedi_name);
 
-      this->jedi_rank = other.jedi_rank;
+      this->rank = other.rank;
 
-      this->jedi_age = other.jedi_age;
+      this->age = other.age;
 
-      this->saber_color = new char(strlen[other.saber_color] + 1);
-      strcpy(this->saber_color, other.saber_color);
+      this->saber_colour = new char[strlen(other.saber_colour) + 1];
+      strcpy(this->saber_colour, other.saber_colour);
 
-      this->jedi_strenght = other.jedi_strength;
+      this->strength = other.strength;
    }
 
    return *this;
 }
 
 Jedi::~Jedi() {
-   delete[] this->jedi_name;
-   delete[] this->saber_color;
+   delete[] jedi_name;
+   delete[] saber_colour;
 }
 
-void Jedi::print(const char* jedi_name) const {
-   std::cout << "Name: " << this->jedi_name << std::endl;
-   std::cout << "Rank: " << this->jedi_rank << std::endl;
-   std::cout << "Age: " << this->jedi_age << std::endl;
-   std::cout << "Saber colour: " << this->saber_color << std::endl;
-   std::cout << "Strenght: " << this->jedi_strenght <<std::endl;
+void Jedi::print() const {
+   std::cout << "Name: " << this->jedi_name << std::endl
+             << "Rank: " << this->rank << std::endl
+             << "Age: " << this->age << std::endl
+             << "Saber Colour: " << this->saber_colour << std::endl
+             << "Strength: " << this->strength << std::endl;
+}
+
+Jedi& Jedi::operator<(Jedi& other) {
+   if(this > &other) {
+      return *this;
+   }
+   return other;
+}
+
+std::ostream& operator<<(std::ostream& out, const Jedi& other) {
+   out << "Name: " << other.jedi_name << std::endl
+       << "Rank: " << other.rank << std::endl
+       << "Age: " << other.age << std::endl
+       << "Saber Colour: " << other.saber_colour << std::endl
+       << "Strength: " << other.strength <<std::endl;
+   
+   return out;
+}
+
+std::istream& operator>>(std::istream& in, Jedi& other) {
+   std::cout << "Name: ";
+   in >> other.jedi_name;
+   std::cout << "Rank: ";
+   in >> other.rank;
+   std::cout << "Age: ";
+   in >> other.age;
+   std::cout << "Saber Colour: ";
+   in >> other.saber_colour;
+   std::cout << "Strength: ";
+   in >> other.strength;
+
+   return in;
 }

@@ -1,34 +1,35 @@
 #pragma once
+#include "Rank.h"
 #include <iostream>
+#include <ostream>
+#include <istream>
 #include <cstring>
 
-enum Rank {
-   YOUNGLING, INITIATE, PADAWAN, KNIGHT_ASPIRANT, KNIGHT, MASTER, BATTLE_MASTER, GRAND_MASTER
-};
 
 class Jedi {
 private:
    char* jedi_name;
-   Rank jedi_rank;
-   int jedi_age;
-   char* saber_color;
-   double jedi_strenght;
+   Rank rank;
+   int age;
+   char* saber_colour;
+   double strength;
 
 public:
    Jedi();
-   //add constructor with parameteres
-   Jedi(const Jedi& other_jedi);
-   Jedi& operator=(const Jedi& other_jedi);
+   Jedi(const Jedi& other);
+   Jedi& operator=(const Jedi& other);
    ~Jedi();
 
-   void promote_jedi(const char* jedi_name, double multiplier);
-   void demote_jedi(const char* jedi_name, double multiplier);
+   void print() const;
 
-   /*
-    * TODO:
-    * get_strongest_jedi(planet_name) -> class Planet(?)
-    * get_most_used_saber_color(planet_name, jedi_rank) -> class Planet(?)
-    * get_youngest_jedi(planet_name, jedi_rank)
-   */
-   
+   Jedi& operator<(Jedi& other);
+
+   //insert getters and setters if needed
+
+   //operators >> and <<
+   friend std::ostream& operator<<(std::ostream& out, const Jedi& other);
+
+   //might not need >>
+   friend std::istream& operator>>(std::istream& in, Jedi& other);
+
 };

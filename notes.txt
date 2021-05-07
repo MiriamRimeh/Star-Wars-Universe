@@ -124,3 +124,45 @@ ios::cur -> отмества от текущата позиция
 ios::end -> отмества от края на потока
 
 ### USE STRING INSTEAD OF CHAR* BY IMPLEMENTING CLASS STRING ###
+
+add_planet <planet_name>
+create_jedi <planet_name> <jedi_name> <jedi_rank> <jedi_age> <saber_color> <jedi_strength>
+removeJedi <jedi_name> <planet_name>
+promote_jedi <jedi_name> <multiplier>
+demote_jedi <jedi_name> <multiplier>
+get_strongest_jedi    <planet_name>
+get_youngest_jedi <planet_name> <jedi_rank>
+get_most_used_saber_color <planet_name> <jedi_rank>
+get_most_used_saber_color <planet_name>
+print <planet_name>
+print <jedi_name>
+<planet_name> + <planet_name>
+
+
+### sorting per year ###
+void sort(Song* songs, int size)
+{
+	for (size_t i = 0; i < size - 1 ; i++)
+	{
+		for (size_t j = 0; j < size - i - 1 ; j++)
+		{
+			if (songs[j].getYear() > songs[j+1].getYear())
+			{
+				Song temp = songs[j];
+				songs[j] = songs[j+2];
+				songs[j+2] = temp;
+			}
+		}
+	}
+}
+
+### sorting people ###
+https://github.com/Pkotova/Object-Oriented-IS-2019-2020---Practice/tree/master/%D0%A4%D0%9C%D0%98
+
+
+### carefully examine this project to see how to work with enums ###
+https://github.com/Pkotova/Object-Oriented-IS-2019-2020---Practice/tree/master/Phone-Book-cpp-master-ConsolePhoneBook/Phone-Book-cpp-master-ConsolePhoneBook/ConsolePhoneBook
+
+### adding and deleting items from a list ###
+examine carefully the project
+https://github.com/Pkotova/Object-Oriented-IS-2019-2020---Practice/tree/master/Repository/Repository
