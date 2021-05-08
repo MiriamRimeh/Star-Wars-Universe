@@ -22,15 +22,15 @@ public:
    // void pop_front(); //doesn't work as expected -> enters an endless recursion? or doens't print anything at all
 
    bool is_empty() const;
-   void get_size() const;
+   int get_size() const;
    void print() const;
 
 
    T& operator[](size_t index);
    const T& operator[](size_t index) const;
 
-   friend std::ostream& operator<<(std::ostream& out, Vector<T>& other);
-   friend std::istream& operator>>(std::istream& in, Vector<T>& other);
+   /* friend std::ostream& operator<<(std::ostream& out, Vector<T>& other);
+   friend std::istream& operator>>(std::istream& in, Vector<T>& other); */
 };
 
 template <typename T>
@@ -150,7 +150,7 @@ bool Vector<T>::is_empty() const {
 }
 
 template <typename T>
-void Vector<T>::get_size() const {
+int Vector<T>::get_size() const {
    return this->size;
 }
 
@@ -171,7 +171,7 @@ const T& Vector<T>::operator[](size_t index) const {
    return this->data[index];
 }
 
-template <typename T>
+/* template <typename T>
 std::istream& operator>>(std::istream& in, Vector<T>& other) {
    for(size_t i = 0; i < other.get_size(); ++i) {
          in >> other.data[i];
@@ -182,7 +182,9 @@ std::istream& operator>>(std::istream& in, Vector<T>& other) {
 
 template <typename T>
 std::ostream& operator<<(std::ostream& out, Vector<T>& other) {
-   for(size_t = 0; i <other.get_size(); ++i) {
+   for(size_t i = 0; i < other.get_size(); ++i) {
       out << other.data[i] << ", ";
    }
-}
+
+   return out;
+} */

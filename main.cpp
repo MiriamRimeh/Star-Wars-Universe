@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include "Planet.cpp"
 
 int main () {
    Vector<int> vec;
@@ -9,4 +10,11 @@ int main () {
    vec.push_front(0);
    vec.pop_back();
    vec.print();
+
+   std::cout << std::endl;
+   Planet planet;
+   planet.add_planet("Jupiter");
+   std::cout << std::endl;
+   planet.create_jedi("Saturn", "Skywalker", YOUNGLING, 20, "blue", 65.78);
+   std::cout << std::endl;
 }
