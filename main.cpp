@@ -11,10 +11,12 @@ int main () {
    vec.pop_back();
    vec.print();
 
-   std::cout << std::endl;
+  std::cout << std::endl;
    Planet planet;
-   planet.add_planet("Jupiter");
-   std::cout << std::endl;
+   //planet.add_planet("Jupiter");
    planet.create_jedi("Saturn", "Skywalker", YOUNGLING, 20, "blue", 65.78);
-   std::cout << std::endl;
+   //planet.create_jedi("Jupiter", "Loki", KNIGHT, 34, "red", 89.90);
+   return 0;
+   //std::cout << std::endl;
+   
 }

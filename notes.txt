@@ -166,3 +166,50 @@ https://github.com/Pkotova/Object-Oriented-IS-2019-2020---Practice/tree/master/P
 ### adding and deleting items from a list ###
 examine carefully the project
 https://github.com/Pkotova/Object-Oriented-IS-2019-2020---Practice/tree/master/Repository/Repository
+
+
+### changing a text in a file ###
+https://stackoverflow.com/questions/30827126/how-to-update-data-at-a-particular-line-in-a-file
+ #include<iostream>
+ #include<fstream>
+ #include<string>
+ #include <cstdio>
+
+using namespace std;
+
+int main() 
+{
+string x;
+ifstream file ( "testt.txt" );
+ofstream ofile ( "test2.txt" );
+while (!file.eof())
+{
+    getline(file,x);
+    if (x == "789")
+    {
+        ofile << "000" << endl;
+    }
+    else
+        ofile << x << endl;
+}
+file.close();
+ofile.close();
+remove("testt.txt");
+return 0;
+}
+
+--- another one --- 
+https://stackoverflow.com/questions/34507989/update-and-delete-data-from-file-in-c
+
+### searching for a word in a text file ###
+char aWord[50];
+while (file.good()) {
+    file>>aWord;
+    if (file.good() && strcmp(aWord, wordToFind) == 0) {
+        //found word
+    }
+}
+
+### counting occurenses of words in a text file ###
+https://stackoverflow.com/questions/16867944/counting-occurrences-of-each-word-in-a-text-file
+https://stackoverflow.com/questions/42771793/c-program-that-counts-repeated-words-on-a-txt-file

@@ -63,6 +63,47 @@ Jedi& Jedi::operator<(Jedi& other) {
    return other;
 }
 
+const char* Jedi::get_name() const {
+   return this->jedi_name;
+}
+
+Rank& Jedi::get_rank() {
+   return this->rank;
+}
+
+int Jedi::get_age() {
+   return this->age;
+}
+
+const char* Jedi::get_colour() const {
+   return this->saber_colour;
+}
+
+double Jedi::get_strength() {
+   return this->strength;
+}
+
+void Jedi::set_name(char* name) {
+   this->jedi_name = name;
+}
+
+void Jedi::set_rank(Rank rank) {
+   this->rank = rank;
+}
+
+void Jedi::set_age(int age) {
+   this->age = age;
+}
+
+void Jedi::set_colour(char* colour) {
+   this->saber_colour = colour;
+}
+
+void Jedi::set_strength(double strength) {
+   this->strength = strength;
+}
+
+
 std::ostream& operator<<(std::ostream& out, const Jedi& other) {
    out << "Name: " << other.jedi_name << std::endl
        << "Rank: " << other.rank << std::endl
