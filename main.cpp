@@ -14,8 +14,12 @@ int main () {
   std::cout << std::endl;
    Planet planet;
    //planet.add_planet("Jupiter");
-   planet.create_jedi("Saturn", "Skywalker", YOUNGLING, 20, "blue", 65.78);
-   //planet.create_jedi("Jupiter", "Loki", KNIGHT, 34, "red", 89.90);
+   // planet.create_jedi("Saturn", "Skywalker", YOUNGLING, 20, "blue", 65.78);
+  // planet.create_jedi("Jupiter", "Thor", KNIGHT_ASPIRANT, 33, "green", 99.90);
+   
+   planet.get_strongest_jedi("Jupiter");
+
+   //planet.get_strongest_jedi("Jupiter");
    return 0;
    //std::cout << std::endl;
    

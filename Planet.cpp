@@ -61,11 +61,11 @@ void Planet::create_jedi(const char* planet_name, const char* jedi_name, Rank je
    char search_jedi[32];
 
    if(file.is_open()) {
-      file << planet_name << std::endl
-                 << jedi_name << std::endl
-                 << jedi_rank << std::endl
-                 << jedi_age << std::endl
-                 << saber_colour << std::endl
+      file << planet_name         //<< std::endl
+                 << jedi_name     //<< std::endl
+                 << jedi_rank     //<< std::endl
+                 << jedi_age      //<<  std::endl
+                 << saber_colour  //<< std::endl
                  << jedi_strength << std::endl;
 
          std::cout << "Jedi was successfully created!";
@@ -123,7 +123,7 @@ void Planet::create_jedi(const char* planet_name, const char* jedi_name, Rank je
    outf.close();
 }*/
 
-/*
+
 void Planet::get_strongest_jedi(const char* planet_name) {
    //open file planets.txt
    //check if planet exists -> if no, print error message, if yes, continue
@@ -133,6 +133,56 @@ void Planet::get_strongest_jedi(const char* planet_name) {
    //print jedi with the biggest strength
    //close file
 
+   std::fstream file;
+      file.open("planets.txt", std::ios::in | std::ios::out | std::ios::app);
+
+      char search_planet[32];
+
+      if(file.is_open()) {
+         while(file.getline(search_planet, 32)) {
+            if(strcmp(search_planet, planet_name) == 0) {
+               std::cout << "Planet " << planet_name << " exists!";
+            }
+         }
+         file.close();
+      }
+/* 
+      
+               int strongest;
+               strongest = citizens[0].get_strength();
+
+               Jedi jedi;
+
+               for(size_t i = 0; i < citizens.get_size(); ++i) {
+                  if(strongest < citizens[i].get_strength()) {
+                     strongest = citizens[i].get_strength();
+                     jedi = citizens[i];
+                  }
+               }
+
+               jedi.print(); */
+
+   /* std::fstream file;
+   file.open("jedis.txt");
+
+   char search_planet[32];
+
+   if(file.is_open()) {
+      while(!file.eof()){   
+         file.getline(search_planet, 32);
+         if(strcmp(search_planet, planet_name) == 0 ) {
+           //if planet is found proceed with the next commands
+           std::cout<< planet_name << " was found!";
+
+         }
+      }
+      file.close();
+   }
+   else {
+      std::cout << "Failed to open file";
+   } */
+
+/* 
    std::fstream file;
    file.open("planets.txt", std::ios::in | std::ios::out | std::ios::app);
 
@@ -144,21 +194,22 @@ void Planet::get_strongest_jedi(const char* planet_name) {
             std::cout << "Planet " << planet_name << " doesn't exists! Please create a planet first!";
             break;
          }
-         else {
-            continue;
-         }
+         continue;
       }
       file.close();
    }
    
    file.open("jedis.txt", std::ios::in | std::ios::out | std::ios::app);
+   file.open("temp.txt", std::ios::out | std::ios::app);
 
    if(file.is_open()) {
+      while(!file.eof()) {
 
-   }
+      }
+   } */
    
 }
-*/
+
 
 
 std::ostream& operator<<(std::ostream& out, const Planet& other) {
