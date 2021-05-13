@@ -10,7 +10,7 @@
 class Planet {
 private:
    char* planet_name;
-   Vector<Jedi> citizens;
+   Vector<Jedi> jedis;
 
 public:
    Planet();
@@ -18,17 +18,14 @@ public:
    Planet& operator=(const Planet& other);
    ~Planet();
 
-   //bool does_jedi_exists();
-   //bool does_planet_exist();
+   const char* get_planet_name() const;
+   void set_planet_name(const char* name);
 
-   void add_planet(const char* planet_name); //works good
-   void create_jedi(const char* planet_name, const char* jedi_name, Rank jedi_rank, int jedi_age, const char* saber_colour, double jedi_strength); //works good
-   void remove_jedi(const char* jedi_name, const char* planet_name);
-   //void promote_jedi(const char* jedi_name, double multiplier);
-   //void demote_jedi(const char* jedi_name, double multiplier);
-   void get_strongest_jedi(const char* planet_name);
+   const Vector<Jedi>& get_jedis() const;
+   void set_jedis(const Vector<Jedi>& other);
 
    //you can implement the interface of the main menu with operator <<
    friend std::ostream& operator<<(std::ostream& out, const Planet& other);
-   //friend std::istream& operator>>(std::istream& in, Planet& other);
+   friend std::istream& operator<<(std::istream& in, const Planet& other);
+   
 };

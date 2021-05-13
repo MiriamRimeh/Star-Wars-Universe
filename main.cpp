@@ -1,26 +1,23 @@
 #include "Vector.h"
-#include "Planet.cpp"
+#include "Planet.h"
+#include "Jedi.h"
+#include "Program.cpp"
+
 
 int main () {
-   Vector<int> vec;
-   vec.push_back(1);
-   vec.push_back(2);
-   vec.push_back(3);
-   vec.push_back(4);
-   vec.push_front(0);
-   vec.pop_back();
-   vec.print();
 
-  std::cout << std::endl;
-   Planet planet;
-   //planet.add_planet("Jupiter");
-   // planet.create_jedi("Saturn", "Skywalker", YOUNGLING, 20, "blue", 65.78);
-  // planet.create_jedi("Jupiter", "Thor", KNIGHT_ASPIRANT, 33, "green", 99.90);
-   
-   planet.get_strongest_jedi("Jupiter");
+  std::cout << "*** Welcome to Star Wars Universe! ***" << std::endl
+            << std::endl; 
 
-   //planet.get_strongest_jedi("Jupiter");
+  
+  Program program;
+  //program.help();
+  //program.add_planet("Mars");
+  program.create_jedi("Jupiter", "Joey", YOUNGLING, 20, "green", 89.9);
+
+  //use a switch case for the commands(?)
+  //if user tries to input an invalid command print an error message
+
    return 0;
-   //std::cout << std::endl;
-   
+  
 }

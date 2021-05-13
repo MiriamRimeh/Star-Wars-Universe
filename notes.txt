@@ -125,12 +125,12 @@ ios::end -> отмества от края на потока
 
 ### USE STRING INSTEAD OF CHAR* BY IMPLEMENTING CLASS STRING ###
 
-add_planet <planet_name>
-create_jedi <planet_name> <jedi_name> <jedi_rank> <jedi_age> <saber_color> <jedi_strength>
-removeJedi <jedi_name> <planet_name>
-promote_jedi <jedi_name> <multiplier>
-demote_jedi <jedi_name> <multiplier>
-get_strongest_jedi    <planet_name>
+add_planet        <planet_name>
+create_jedi       <planet_name> <jedi_name> <jedi_rank> <jedi_age> <saber_color> <jedi_strength>
+removeJedi        <jedi_name> <planet_name>
+promote_jedi      <jedi_name> <multiplier>
+demote_jedi       <jedi_name> <multiplier>
+get_strongest_jedi<planet_name>
 get_youngest_jedi <planet_name> <jedi_rank>
 get_most_used_saber_color <planet_name> <jedi_rank>
 get_most_used_saber_color <planet_name>

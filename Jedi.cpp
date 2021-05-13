@@ -9,15 +9,18 @@ Jedi::Jedi() {
 }
 
 Jedi::Jedi(const Jedi& other) {
-   this->jedi_name = new char[strlen(other.jedi_name) + 1];
-   strcpy(this->jedi_name, other.jedi_name);
-
+   if(&other!= nullptr) {
+      this->jedi_name = new char[strlen(other.jedi_name) + 1];
+      strcpy(this->jedi_name, other.jedi_name);
+   }
    this->rank = other.rank;
 
    this->age = other.age;
 
-   this->saber_colour = new char[strlen(other.saber_colour) + 1];
-   strcpy(this->saber_colour, other.saber_colour);
+   if(&other != nullptr) {
+      this->saber_colour = new char[strlen(other.saber_colour) + 1];
+      strcpy(this->saber_colour, other.saber_colour);
+   }
 
    this->strength = other.strength;
 }
@@ -56,11 +59,18 @@ void Jedi::print() const {
              << "Strength: " << this->strength << std::endl;
 }
 
-Jedi& Jedi::operator<(Jedi& other) {
-   if(this > &other) {
-      return *this;
-   }
-   return other;
+Jedi::Jedi(const char* name, Rank rank, int age, const char* saber_colour, double strength) {
+   this->jedi_name = new char[strlen(name) + 1];
+   strcpy(this->jedi_name, name);
+
+   this->rank = rank;
+
+   this->age = age;
+
+   this->saber_colour = new char[strlen(saber_colour) + 1];
+   strcpy(this->saber_colour,saber_colour);
+
+   this->strength = strength;
 }
 
 const char* Jedi::get_name() const {
@@ -83,8 +93,13 @@ double Jedi::get_strength() {
    return this->strength;
 }
 
-void Jedi::set_name(char* name) {
-   this->jedi_name = name;
+void Jedi::set_name(const char* name) {
+   if(name != nullptr) {
+      delete[] this->jedi_name;
+
+      this->jedi_name = new char[strlen(name) + 1];
+      strcpy(this->jedi_name, name);
+   }
 }
 
 void Jedi::set_rank(Rank rank) {
@@ -95,8 +110,13 @@ void Jedi::set_age(int age) {
    this->age = age;
 }
 
-void Jedi::set_colour(char* colour) {
-   this->saber_colour = colour;
+void Jedi::set_colour(const char* colour) {
+   if(colour != nullptr) {
+      delete[] this->saber_colour;
+
+      this->saber_colour = new char[strlen(colour) + 1];
+      strcpy(this->saber_colour, colour);
+   }
 }
 
 void Jedi::set_strength(double strength) {
@@ -112,19 +132,4 @@ std::ostream& operator<<(std::ostream& out, const Jedi& other) {
        << "Strength: " << other.strength <<std::endl;
    
    return out;
-}
-
-std::istream& operator>>(std::istream& in, Jedi& other) {
-   std::cout << "Name: ";
-   in >> other.jedi_name;
-   std::cout << "Rank: ";
-   in >> other.rank;
-   std::cout << "Age: ";
-   in >> other.age;
-   std::cout << "Saber Colour: ";
-   in >> other.saber_colour;
-   std::cout << "Strength: ";
-   in >> other.strength;
-
-   return in;
 }
