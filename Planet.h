@@ -24,8 +24,8 @@ public:
    const Vector<Jedi>& get_jedis() const;
    void set_jedis(const Vector<Jedi>& other);
 
-   //you can implement the interface of the main menu with operator <<
+   
    friend std::ostream& operator<<(std::ostream& out, const Planet& other);
-   friend std::istream& operator<<(std::istream& in, const Planet& other);
+   friend std::istream& operator>>(std::istream& in, const Planet& other);
    
 };

@@ -19,7 +19,6 @@ public:
    void push_back(T element);
    void pop_back();
    void push_front(T element);
-   // void pop_front(); //doesn't work as expected -> enters an endless recursion? or doens't print anything at all
 
    bool is_empty() const;
    int get_size() const;
@@ -122,22 +121,6 @@ void Vector<T>::push_front(T element) {
    }
    this->data[0] = element;
 }
-
-/* template <typename T>
-void Vector<T>::pop_front() {
-   if(this->size = 0) {
-      std::cerr << "The vector is empty!" << std::endl;
-      return;
-   }
-
-   do{
-      for(size_t i = 0; i < this->size; ++i) {
-         this->data[i] = this->data[i + 1];
-      }
-      --this->size;
-   }
-   while(this->size >= 0);
-} */
 
 template <typename T>
 bool Vector<T>::is_empty() const {
