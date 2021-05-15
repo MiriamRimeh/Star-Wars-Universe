@@ -1,43 +1,37 @@
-#include "Program.h"
+#include "Universe.h"
 
-Program::Program() {
+void Universe::copy(const Universe& other) {
+   this->path = new char[strlen(other.path) + 1];
+   strcpy(this->path, other.path);
+}
+
+void Universe::erase() {
+   delete[] this->path;
+}
+Universe::Universe() {
    this->path = nullptr;
 }
 
-Program::Program(const Program& other) {
-   if(&other != nullptr) {
-      this->path = new char[strlen(other.path) + 1];
-      strcpy(this->path, other.path);
-   }
+Universe::Universe(const Universe& other) {
+   copy(other);
 }
 
-Program& Program::operator=(const Program& other) {
+Universe& Universe::operator=(const Universe& other) {
    if(this != &other) {
-      delete[] path;
-
-      this->path = new char[strlen(other.path) + 1];
-      strcpy(this->path, other.path);
+      erase();
+      copy(other);
    }
 
    return *this;
 }
 
-Program::~Program() {
-   delete[] path;
-}
-
-void Program::help() {
-   std::cout << "The following coommands are supported: " << std::endl;
-   std::cout << "open <file>        opens <file>" << std::endl
-             << "close              closes currently opened file" << std::endl
-             << "save               saves the currently open file" << std::endl
-             << "saveas <file>      saves the currently opened file in <file>" << std::endl
-             << "help               prints helpful information" << std::endl
-             << "exit               exits the program" << std::endl; 
+Universe::~Universe() {
+   erase();
 }
 
 
-bool Program::can_change_rank() {
+
+bool Universe::can_change_rank() const {
    Jedi jedi;
    if(jedi.get_rank() == YOUNGLING || jedi.get_rank() == GRAND_MASTER) {
       std::cout << "Jedi's rank can't be changed!";
@@ -46,7 +40,7 @@ bool Program::can_change_rank() {
    return true;
 }
 
-void Program::add_planet(const char* planet_name) {
+void Universe::add_planet(const char* planet_name) {
    std::ifstream inf("planets.txt");
 
    char search[32];
@@ -73,10 +67,11 @@ void Program::add_planet(const char* planet_name) {
    outf.close();
 }
 
-void Program::create_jedi(const char* planet_name, const char* jedi_name, Rank rank, int age, const char* saber_colour, double strength) {
+void Universe::create_jedi(const char* planet_name, const char* jedi_name, Rank rank, int age, const char* saber_colour, double strength) {
    std::ifstream inf("jedis.txt");
 
    char search[32];
+   //if(inf)
    while(!inf.eof()) {
       inf.getline(search, 32);
       if(strcmp(jedi_name, search) == 0) {
@@ -100,7 +95,7 @@ void Program::create_jedi(const char* planet_name, const char* jedi_name, Rank r
    outf.close();
 } 
 
-/* void Program::remove_jedi(const char* jedi_name, const char* planet_name) {
+/* void Universe::remove_jedi(const char* jedi_name, const char* planet_name) {
    //TODO: check if jedi / planet exists
    //      check if jedi lives on planet
 
@@ -114,7 +109,7 @@ void Program::create_jedi(const char* planet_name, const char* jedi_name, Rank r
    }
 } */
 
-void Program::promote_jedi(const char* jedi_name, double multiplier) {
+void Universe::promote_jedi(const char* jedi_name, double multiplier) {
    std::ifstream inf("jedis.txt");
 
    char search[32];
@@ -132,7 +127,8 @@ void Program::promote_jedi(const char* jedi_name, double multiplier) {
 
 }
 
-std::ostream& operator<<(std::ostream& out, const Program& other) {
+//fix
+std::ostream& operator<<(std::ostream& out, const Universe& other) {
    out << other;
    return out;
 }

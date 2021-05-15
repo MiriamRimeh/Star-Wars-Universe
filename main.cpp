@@ -1,7 +1,7 @@
 #include "Vector.h"
 #include "Planet.h"
 #include "Jedi.h"
-#include "Program.cpp"
+#include "Universe.h"
 
 
 int main () {
@@ -10,10 +10,11 @@ int main () {
             << std::endl; 
 
   
-  Program program;
+  Universe universe;
   //program.help();
   //program.add_planet("Mars");
-  program.create_jedi("Jupiter", "Joey", YOUNGLING, 20, "green", 89.9);
+  //universe.create_jedi("Jupiter", "Joey", YOUNGLING, 20, "green", 89.9);
+  universe.add_planet("Venus");
 
   //use a switch case for the commands(?)
   //if user tries to input an invalid command print an error message
@@ -21,3 +22,7 @@ int main () {
    return 0;
   
 }
+
+
+#include "Jedi.cpp"
+#include "Universe.cpp"

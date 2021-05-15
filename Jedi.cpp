@@ -1,5 +1,24 @@
 #include "Jedi.h"
 
+void Jedi::copy(const Jedi& other) {
+   this->jedi_name = new char[strlen(other.jedi_name) + 1];
+   strcpy(this->jedi_name, other.jedi_name);
+
+   this->rank = other.rank;
+
+   this->age = other.age;
+   
+   this->saber_colour = new char[strlen(other.saber_colour) + 1];
+   strcpy(this->saber_colour, other.saber_colour);
+   
+   this->strength = other.strength;
+}
+
+void Jedi::erase() {
+   delete[] jedi_name;
+   delete[] saber_colour;
+}
+
 Jedi::Jedi() {
    this->jedi_name = nullptr;
    this->rank = Rank::YOUNGLING;
@@ -9,55 +28,29 @@ Jedi::Jedi() {
 }
 
 Jedi::Jedi(const Jedi& other) {
-   if(&other!= nullptr) {
-      this->jedi_name = new char[strlen(other.jedi_name) + 1];
-      strcpy(this->jedi_name, other.jedi_name);
-   }
-   this->rank = other.rank;
-
-   this->age = other.age;
-
-   if(&other != nullptr) {
-      this->saber_colour = new char[strlen(other.saber_colour) + 1];
-      strcpy(this->saber_colour, other.saber_colour);
-   }
-
-   this->strength = other.strength;
+   copy(other);
 }
 
 Jedi& Jedi::operator=(const Jedi& other) {
    if(this != &other) {
-      delete[] jedi_name;
-      delete[] saber_colour;
-
-      this->jedi_name = new char[strlen(other.jedi_name) + 1];
-      strcpy(this->jedi_name, other.jedi_name);
-
-      this->rank = other.rank;
-
-      this->age = other.age;
-
-      this->saber_colour = new char[strlen(other.saber_colour) + 1];
-      strcpy(this->saber_colour, other.saber_colour);
-
-      this->strength = other.strength;
+      erase();
+      copy(other);
    }
 
    return *this;
 }
 
 Jedi::~Jedi() {
-   delete[] jedi_name;
-   delete[] saber_colour;
+   erase();
 }
-
+/* 
 void Jedi::print() const {
    std::cout << "Name: " << this->jedi_name << std::endl
              << "Rank: " << this->rank << std::endl
              << "Age: " << this->age << std::endl
              << "Saber Colour: " << this->saber_colour << std::endl
              << "Strength: " << this->strength << std::endl;
-}
+} */
 
 Jedi::Jedi(const char* name, Rank rank, int age, const char* saber_colour, double strength) {
    this->jedi_name = new char[strlen(name) + 1];
