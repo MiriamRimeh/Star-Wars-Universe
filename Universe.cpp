@@ -30,7 +30,6 @@ Universe::~Universe() {
 }
 
 
-
 bool Universe::can_change_rank() const {
    Jedi jedi;
    if(jedi.get_rank() == YOUNGLING || jedi.get_rank() == GRAND_MASTER) {

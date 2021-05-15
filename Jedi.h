@@ -24,8 +24,6 @@ public:
    Jedi& operator=(const Jedi& other);
    ~Jedi();
 
-  // void print() const;
-
    const char* get_name() const;
    Rank& get_rank();
    int get_age();

@@ -9,15 +9,16 @@ private:
 
    void copy(const Commands& other);
    void erase();
+
 public:
    Commands();
    Commands(const Commands& other);
    Commands& operator=(const Commands& other);
    ~Commands();
 
-   void open(const char* path); //<path>
+   void open(const char* path); 
    void close();
    void save();
-   void saveas(); //<path>
+   void saveas();
    void help();
 };

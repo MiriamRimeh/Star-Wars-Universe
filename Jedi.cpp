@@ -43,14 +43,6 @@ Jedi& Jedi::operator=(const Jedi& other) {
 Jedi::~Jedi() {
    erase();
 }
-/* 
-void Jedi::print() const {
-   std::cout << "Name: " << this->jedi_name << std::endl
-             << "Rank: " << this->rank << std::endl
-             << "Age: " << this->age << std::endl
-             << "Saber Colour: " << this->saber_colour << std::endl
-             << "Strength: " << this->strength << std::endl;
-} */
 
 Jedi::Jedi(const char* name, Rank rank, int age, const char* saber_colour, double strength) {
    this->jedi_name = new char[strlen(name) + 1];

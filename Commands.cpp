@@ -36,8 +36,6 @@ void Commands::open(const char* path) {
 }
 
 
-
-
 void Commands::help() {
    std::cout << "The following coommands are supported: " << std::endl;
    std::cout << "open <file>        opens <file>" << std::endl
