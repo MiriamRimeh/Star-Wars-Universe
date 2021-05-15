@@ -1,16 +1,17 @@
 #pragma once
-#include "Jedi.cpp"
+#include "Jedi.h"
 #include "Vector.h"
 #include <iostream>
 #include <cstring>
-#include <ostream>
-#include <istream>
 #include <fstream>
 
 class Planet {
 private:
    char* planet_name;
    Vector<Jedi> jedis;
+
+   void copy(const Planet& other);
+   void erase();
 
 public:
    Planet();
@@ -26,6 +27,6 @@ public:
 
    
    friend std::ostream& operator<<(std::ostream& out, const Planet& other);
-   friend std::istream& operator>>(std::istream& in, const Planet& other);
+   friend std::istream& operator>>(std::istream& in, Planet& other);
    
 };

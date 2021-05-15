@@ -13,6 +13,9 @@ private:
    int age;
    char* saber_colour;
    double strength;
+
+   void copy(const Jedi& other);
+   void erase();
    
 public:
    Jedi();
@@ -21,7 +24,7 @@ public:
    Jedi& operator=(const Jedi& other);
    ~Jedi();
 
-   void print() const;
+  // void print() const;
 
    const char* get_name() const;
    Rank& get_rank();
@@ -36,6 +39,6 @@ public:
    void set_strength(double strength);
 
    friend std::ostream& operator<<(std::ostream& out, const Jedi& other);
-
+   //TODO: operator>>
 
 };

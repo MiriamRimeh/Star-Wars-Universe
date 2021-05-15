@@ -8,6 +8,8 @@ private:
    size_t size;
    size_t capacity;
 
+   void copy(const Vector<T>& other);
+   void erase();
    void resize();
 
 public:
@@ -16,9 +18,9 @@ public:
    Vector& operator=(const Vector<T>& other);
    ~Vector();
 
-   void push_back(T element);
+   void push_back(T& element);
    void pop_back();
-   void push_front(T element);
+   void push_front(T& element);
 
    bool is_empty() const;
    int get_size() const;
@@ -28,9 +30,24 @@ public:
    T& operator[](size_t index);
    const T& operator[](size_t index) const;
 
-   /* friend std::ostream& operator<<(std::ostream& out, Vector<T>& other);
+   /* friend std::ostream& operator<<(std::ostream& out, const Vector<T>& other);
    friend std::istream& operator>>(std::istream& in, Vector<T>& other); */
 };
+
+template <typename T>
+void Vector<T>::copy(const Vector<T>& other) {
+   this->capacity = other.capacity;
+   this->size = other.size;
+   this->data = new T[other.capacity];
+   for(size_t i = 0; i < this->size; ++i) {
+      this->data[i] = other.data[i];
+   }
+}
+
+template <typename T>
+void Vector<T>::erase() {
+   delete[] this->data;
+}
 
 template <typename T>
 void Vector<T>::resize() {
@@ -47,31 +64,20 @@ void Vector<T>::resize() {
 template <typename T>
 Vector<T>::Vector() {
    this->size = 0;
-   this->capacity = 0;
+   this->capacity = 8;
    this->data = new T[this->capacity];
 }
 
 template <typename T>
 Vector<T>::Vector(const Vector<T>& other) {
-   this->capacity = other.capacity;
-   this->size = other.size;
-   this->data = new T[other.capacity];
-   for(size_t i = 0; i < this->size; ++i) {
-      this->data[i] = other.data[i];
-   }
+   copy(other);
 }
 
 template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
    if(this != &other) {
-      delete[] this->data;
-
-      this->capacity = other.capacity;
-      this->size = other.size;
-      this->data = new T[other.capacity];
-      for(size_t i = 0; i < this->size; ++i) {
-         this->data[i] = other.data[i];
-      }
+      erase();
+      copy(other);
    }
 
    return *this;
@@ -79,11 +85,11 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
 
 template <typename T>
 Vector<T>::~Vector() {
-   delete[] this->data;
+   erase();
 }
 
 template <typename T>
-void Vector<T>::push_back(T element) {
+void Vector<T>::push_back(T& element) {
    this->size++;
    if(this->size >= this->capacity) {
       this->resize();
@@ -110,7 +116,7 @@ void Vector<T>::pop_back() {
 }
 
 template <typename T>
-void Vector<T>::push_front(T element) {
+void Vector<T>::push_front(T& element) {
    this->size++;
    if(this->size >= this->capacity) {
       this->resize();
@@ -164,7 +170,7 @@ std::istream& operator>>(std::istream& in, Vector<T>& other) {
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& out, Vector<T>& other) {
+std::ostream& operator<<(std::ostream& out, const Vector<T>& other) {
    for(size_t i = 0; i < other.get_size(); ++i) {
       out << other.data[i] << ", ";
    }
